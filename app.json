@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ad1603bf-73e7-44cb-b9df-04da85fbd26d"
+      }
+    },
+    "owner": "aliyark145"
   }
 }
