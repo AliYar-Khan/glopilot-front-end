@@ -22,7 +22,12 @@ export default function SearchFoodHome() {
       <View style={styles.row}>
         <Image source={BACK_ICON} />
         <Text>Search</Text>
-        <Image source={CART_ICON} />
+        <View style={styles.badgeContainer}>
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{cartItemCount}</Text>
+          </View>
+          <Image source={CART_ICON} />
+        </View>
       </View>
       <View style={styles.divider} />
       <View style={styles.inputContainer}>
@@ -109,5 +114,25 @@ const styles = StyleSheet.create({
   },
   textList: {
     fontSize: 16,
+  },
+  badgeContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  badge: {
+    backgroundColor: "#4460EF",
+    borderRadius: 10,
+    width: 18,
+    height: 18,
+    alignItems: "center",
+    alignContent: "center",
+    position: "absolute",
+    top: -10,
+    left: 10,
+    zIndex: 1000,
+  },
+  badgeText: {
+    color: "white",
+    fontSize: 12,
   },
 });

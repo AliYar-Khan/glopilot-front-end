@@ -9,11 +9,12 @@ import {
 } from "react-native";
 import BACK_ICON from "./assets/icons/icon-back.png";
 import CART_ICON from "./assets/icons/icon-cart.png";
-import ARROW_FORWARD from "./assets/icons/arrow-forward-fill.png";
+import ARROW_FORWARD from "./assets/icons/arrow-downward-fill.png";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import DatePicker from "react-native-date-picker";
 const Schedule = () => {
+  const [cartItemCount, setCartItemCount] = useState(0);
   const [date, setDate] = useState(new Date());
   const [openDate, setOpenDate] = useState(false);
 
@@ -111,7 +112,12 @@ const Schedule = () => {
         <View style={styles.row}>
           <Image source={BACK_ICON} />
           <Text>Pick a time</Text>
-          <Image source={CART_ICON} />
+          <View style={styles.badgeContainer}>
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>{cartItemCount}</Text>
+            </View>
+            <Image source={CART_ICON} />
+          </View>
         </View>
         <View style={styles.divider} />
       </View>
@@ -289,5 +295,25 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "UberMove-Medium",
     fontSize: 16,
+  },
+  badgeContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  badge: {
+    backgroundColor: "#4460EF",
+    borderRadius: 10,
+    width: 18,
+    height: 18,
+    alignItems: "center",
+    alignContent: "center",
+    position: "absolute",
+    top: -10,
+    left: 10,
+    zIndex: 1000,
+  },
+  badgeText: {
+    color: "white",
+    fontSize: 12,
   },
 });

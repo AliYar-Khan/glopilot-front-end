@@ -10,6 +10,8 @@ import INVITE_ICON from "./assets/icons/icon-gift.png";
 import SearchHome from "./SearchHomeFood";
 import SearchHome2 from "./SearchHomeFood2";
 import Schedule from "./Schedule";
+import PickLocation from "./PickLocation";
+import FoodDetails from "./FoodDetails";
 const Drawer = createDrawerNavigator();
 
 function HomeScreen({ navigation }) {
@@ -76,7 +78,7 @@ const LeftDrawerContent = ({ navigation }) => (
 const HomeDrawer = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Schedule"
+      initialRouteName="FoodDetails"
       drawerType="slide"
       drawerStyle={stylesDrawer.drawer}
       screenOptions={{ drawerPosition: "right", headerShown: false }}
@@ -86,6 +88,8 @@ const HomeDrawer = () => {
       <Drawer.Screen name="SearchFood" component={SearchHome} />
       <Drawer.Screen name="SearchFood2" component={SearchHome2} />
       <Drawer.Screen name="Schedule" component={Schedule} />
+      <Drawer.Screen name="PickLocation" component={PickLocation} />
+      <Drawer.Screen name="FoodDetails" component={FoodDetails} />
     </Drawer.Navigator>
   );
 };
