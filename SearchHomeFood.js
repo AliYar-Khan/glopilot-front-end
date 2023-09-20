@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, Image, View, FlatList } from "react-native";
-import BACK_ICON from "./assets/icon-back.png";
-import CART_ICON from "./assets/icon-cart.png";
-import SEARCH_ICON from "./assets/icon-search.png";
-import CLOCK_ICON from "./assets/icon-clock.png";
+import BACK_ICON from "./assets/icons/icon-back.png";
+import CART_ICON from "./assets/icons/icon-cart.png";
+import SEARCH_ICON from "./assets/icons/icon-search.png";
+import CLOCK_ICON from "./assets/icons/icon-clock.png";
 import { TextInput } from "react-native";
 
-export default function Screen92() {
-  const SEARCHES = ["Meat", "Vine", "Vegetables"];
+export default function SearchFoodHome() {
+  const SEARCHES = ["Katsu Chicken", "Curry Chicket", "Fast Food", "Chineese"];
 
   const Item = ({ item }) => (
     <View style={styles.itemList}>

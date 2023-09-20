@@ -2,14 +2,14 @@ import React from "react";
 import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import "react-native-gesture-handler";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
-import ORDERS_ICON from "./assets/icon-receipt.png";
-import HEART_ICON from "./assets/icon-heart.png";
-import HELP_ICON from "./assets/icon-question.png";
-import PROMOTION_ICON from "./assets/icon-price-tag.png";
-import INVITE_ICON from "./assets/icon-gift.png";
-import Screen160 from "./screen_160";
-import Screen92 from "./screen_92";
+import ORDERS_ICON from "./assets/icons/icon-receipt.png";
+import HEART_ICON from "./assets/icons/icon-heart.png";
+import HELP_ICON from "./assets/icons/icon-question.png";
+import PROMOTION_ICON from "./assets/icons/icon-price-tag.png";
+import INVITE_ICON from "./assets/icons/icon-gift.png";
+import SearchHome from "./SearchHomeFood";
+import SearchHome2 from "./SearchHomeFood2";
+import Schedule from "./Schedule";
 const Drawer = createDrawerNavigator();
 
 function HomeScreen({ navigation }) {
@@ -26,35 +26,35 @@ const LeftDrawerContent = ({ navigation }) => (
   <View style={stylesDrawer.drawerContainer}>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("Screen1")}
+      onPress={() => navigation.navigate("SearchFood")}
     >
       <Image source={ORDERS_ICON} />
       <Text style={stylesDrawer.drawerText}>Orders</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("Screen2")}
+      onPress={() => navigation.navigate("SearchFood2")}
     >
       <Image source={HEART_ICON} />
       <Text style={stylesDrawer.drawerText}>Favourites</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("Screen2")}
+      onPress={() => navigation.navigate("Schedule")}
     >
       <Image source={HELP_ICON} />
       <Text style={stylesDrawer.drawerText}>Help</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("Screen2")}
+      onPress={() => navigation.navigate("SearchFood")}
     >
       <Image source={PROMOTION_ICON} />
       <Text style={stylesDrawer.drawerText}>Promotions</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("Screen2")}
+      onPress={() => navigation.navigate("SearchFood2")}
     >
       <Image source={INVITE_ICON} style={{ marginBottom: 15 }} />
       <View style={{ display: "flex", flexDirection: "column" }}>
@@ -73,23 +73,24 @@ const LeftDrawerContent = ({ navigation }) => (
   </View>
 );
 
-const App = () => {
+const HomeDrawer = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerType="slide"
-        drawerStyle={stylesDrawer.drawer}
-        screenOptions={{ drawerPosition: "right" }}
-        drawerContent={(props) => <LeftDrawerContent {...props} />}
-      >
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Screen1" component={Screen160} />
-        <Drawer.Screen name="Screen2" component={Screen92} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Drawer.Navigator
+      initialRouteName="Schedule"
+      drawerType="slide"
+      drawerStyle={stylesDrawer.drawer}
+      screenOptions={{ drawerPosition: "right", headerShown: false }}
+      drawerContent={(props) => <LeftDrawerContent {...props} />}
+    >
+      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="SearchFood" component={SearchHome} />
+      <Drawer.Screen name="SearchFood2" component={SearchHome2} />
+      <Drawer.Screen name="Schedule" component={Schedule} />
+    </Drawer.Navigator>
   );
 };
+
+export default HomeDrawer;
 
 const stylesDrawer = StyleSheet.create({
   drawer: {
@@ -112,5 +113,3 @@ const stylesDrawer = StyleSheet.create({
     marginLeft: 10,
   },
 });
-
-export default App;
