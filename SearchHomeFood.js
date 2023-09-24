@@ -1,3 +1,4 @@
+import React, { useState, useCallback } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, Image, View, FlatList } from "react-native";
 import BACK_ICON from "./assets/icons/icon-back.png";
@@ -5,9 +6,11 @@ import CART_ICON from "./assets/icons/icon-cart.png";
 import SEARCH_ICON from "./assets/icons/icon-search.png";
 import CLOCK_ICON from "./assets/icons/icon-clock.png";
 import { TextInput } from "react-native";
-
+import * as SplashScreen from "expo-splash-screen";
+import * as Font from "expo-font";
 export default function SearchFoodHome() {
   const SEARCHES = ["Katsu Chicken", "Curry Chicket", "Fast Food", "Chineese"];
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   const Item = ({ item }) => (
     <View style={styles.itemList}>
@@ -16,8 +19,22 @@ export default function SearchFoodHome() {
     </View>
   );
 
+  const [fontsLoaded] = Font.useFonts({
+    "UberMove-Medium": require("./assets/fonts/UberMove-Medium.ttf"),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar style="auto" />
       <View style={styles.row}>
         <Image source={BACK_ICON} />

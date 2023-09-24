@@ -15,7 +15,7 @@ import HISTORY_ICON from "./assets/icons/history-clock.png";
 import PENCIL_ICON from "./assets/icons/pencil.png";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
-import DatePicker from "react-native-date-picker";
+
 const PickLocation = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
 
@@ -35,6 +35,7 @@ const PickLocation = () => {
   };
   const [fontsLoaded] = Font.useFonts({
     "UberMove-Medium": require("./assets/fonts/UberMove-Medium.ttf"),
+    "UberMove-Bold": require("./assets/fonts/UberMove-Bold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {

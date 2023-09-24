@@ -12,7 +12,8 @@ import CART_ICON from "./assets/icons/icon-cart.png";
 import ARROW_FORWARD from "./assets/icons/arrow-downward-fill.png";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
-import DatePicker from "react-native-date-picker";
+import DateTimePicker from "@react-native-community/datetimepicker";
+
 const Schedule = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
   const [date, setDate] = useState(new Date());
@@ -93,6 +94,24 @@ const Schedule = () => {
     setOpenDate(true);
   };
 
+  const onDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setOpenDate(false);
+    setDate(currentDate);
+  };
+
+  const onTimeStartChange = (event, selectedTimeStart) => {
+    const currentDate = selectedTimeStart;
+    setTimeStart(currentDate);
+    setOpenTimeStart(false);
+  };
+
+  const onTimeEndChange = (event, selectedTimeEnd) => {
+    const currentDate = selectedTimeEnd;
+    setTimeEnd(currentDate);
+    setOpenTimeEnd(false);
+  };
+
   const selectStartTime = () => {
     setOpenTimeStart(true);
     setOpenDate(false);
@@ -153,45 +172,33 @@ const Schedule = () => {
             <Image source={ARROW_FORWARD} />
           </TouchableOpacity>
         </View>
-        <DatePicker
-          modal
-          open={openDate}
-          mode="date"
-          date={date}
-          onConfirm={(date) => {
-            setOpenDate(false);
-            setDate(date);
-          }}
-          onCancel={() => {
-            setOpenDate(false);
-          }}
-        />
-        <DatePicker
-          modal
-          open={openTimeStart}
-          mode="time"
-          date={timeStart}
-          onConfirm={(date) => {
-            setOpenTimeStart(false);
-            setTimeStart(date);
-          }}
-          onCancel={() => {
-            setOpenTimeStart(false);
-          }}
-        />
-        <DatePicker
-          modal
-          open={openTimeEnd}
-          mode="time"
-          date={timeEnd}
-          onConfirm={(date) => {
-            setOpenTimeEnd(false);
-            setTimeEnd(date);
-          }}
-          onCancel={() => {
-            setOpenTimeEnd(false);
-          }}
-        />
+        {openDate && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={"date"}
+            onChange={onDateChange}
+          />
+        )}
+        {openTimeStart && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={timeStart}
+            mode={"time"}
+            is24Hour={false}
+            onChange={onTimeStartChange}
+          />
+        )}
+        {openTimeEnd && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={timeEnd}
+            mode={"time"}
+            is24Hour={false}
+            onChange={onTimeEndChange}
+          />
+        )}
+
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.blueButton}>
             <Text style={styles.whiteText}>Schedule</Text>

@@ -83,6 +83,7 @@ const FoodDetails = () => {
 
   const [fontsLoaded] = Font.useFonts({
     "UberMove-Medium": require("./assets/fonts/UberMove-Medium.ttf"),
+    "UberMove-Bold": require("./assets/fonts/UberMove-Bold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {

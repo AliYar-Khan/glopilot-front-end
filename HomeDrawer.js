@@ -21,6 +21,21 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
         <Text>Open Drawer</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("SearchFood")}>
+        <Text>Search Food</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("SearchFood2")}>
+        <Text>Search Food2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Schedule")}>
+        <Text>Schedule</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("PickLocation")}>
+        <Text>Pick up Location</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("FoodDetails")}>
+        <Text>FoodDetails</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -28,35 +43,35 @@ const LeftDrawerContent = ({ navigation }) => (
   <View style={stylesDrawer.drawerContainer}>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("SearchFood")}
+      onPress={() => navigation.navigate("Orders")}
     >
       <Image source={ORDERS_ICON} />
       <Text style={stylesDrawer.drawerText}>Orders</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("SearchFood2")}
+      onPress={() => navigation.navigate("Favourites")}
     >
       <Image source={HEART_ICON} />
       <Text style={stylesDrawer.drawerText}>Favourites</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("Schedule")}
+      onPress={() => navigation.navigate("Help")}
     >
       <Image source={HELP_ICON} />
       <Text style={stylesDrawer.drawerText}>Help</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("SearchFood")}
+      onPress={() => navigation.navigate("Promotions")}
     >
       <Image source={PROMOTION_ICON} />
       <Text style={stylesDrawer.drawerText}>Promotions</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={stylesDrawer.drawerItem}
-      onPress={() => navigation.navigate("SearchFood2")}
+      onPress={() => navigation.navigate("InviteFriends")}
     >
       <Image source={INVITE_ICON} style={{ marginBottom: 15 }} />
       <View style={{ display: "flex", flexDirection: "column" }}>
@@ -78,7 +93,7 @@ const LeftDrawerContent = ({ navigation }) => (
 const HomeDrawer = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="FoodDetails"
+      initialRouteName="Home"
       drawerType="slide"
       drawerStyle={stylesDrawer.drawer}
       screenOptions={{ drawerPosition: "right", headerShown: false }}
